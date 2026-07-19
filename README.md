@@ -79,24 +79,11 @@ On unseen imagery, the Multi-Layer model consistently resolves scene semantics t
 
 ![Qualitative Comparison](./results/Qualitative%20Comparision.png)
 
-| Scene | Single Layer Caption | Multi Layer Caption |
-|---|---|---|
-| Tokyo Olympics Stadium | "...around a **playground**" | "...around a **stadium**" |
-| Residential area | "...close to a road" | "...in a **medium residential area**" |
-| Dulles International Airport | "several **cars** are parked in a **parking lot**" | "three **planes** are parked on an **airport**" |
-
 ## Zero-Shot Validation: Real-World Conflict-Zone Imagery
 
 To test generalization beyond the training distribution, the Multi-Layer Transformer was evaluated zero-shot on independent, unannotated satellite imagery of the 2026 Iran War, sourced from Reuters and entirely excluded from training/validation. The model correctly identified domain-relevant elements — vessels, storage tanks, industrial infrastructure — despite no conflict-zone imagery appearing anywhere in training:
 
 ![Captioning the 2026 Iran War Conflict Zones](./results/Captioning%20The%202026%20IRAN%20WAR%20Conflict%20Zones.png)
-
-| Location | Generated Caption |
-|---|---|
-| Konarak Naval Base, Iran | "several boats are in a port near a dock" |
-| Naval facilities, Bushehr, Iran | "many storage tanks are close to several buildings" |
-| Near Natanz nuclear facility | "many storage tanks are in an industrial area" |
-| Bushehr Airbase, Iran | "many planes are parked in an airport near a road" |
 
 This confirms the model's captioning ability generalizes to genuinely out-of-distribution, operationally sourced imagery rather than just held-out samples from the training distribution.
 
