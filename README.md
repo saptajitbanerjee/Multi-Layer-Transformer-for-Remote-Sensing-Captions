@@ -2,6 +2,9 @@
 
 A deep learning image captioning system for satellite imagery, built around a custom Multi-Layer Transformer with an EfficientNetB7 backbone. Evaluated against a single-layer baseline on a domain-specific satellite dataset, and stress-tested zero-shot on independent, unannotated real-world conflict-zone imagery.
 
+🔗 **[Multi-Layer Transformer on Kaggle](https://www.kaggle.com/code/rogaldorn7/multi-layer-transformer-remote-sensing-captions)** &nbsp;|&nbsp; **[Single-Layer Transformer on Kaggle](https://www.kaggle.com/code/rogaldorn7/single-layer-transformer-remote-sensing-captions)**
+
+
 > **Scope note:** This repo covers my individual contribution to a 3-person team project — architecture design and optimization of the Single- and Multi-Layer Transformer pipelines, training and evaluation of both models on the satellite dataset, and zero-shot real-world validation. Teammates Umika Khugsal and Aritra Das contributed the Phase 1 recurrent baselines (CNN-LSTM/CNN-GRU), the data/tokenization pipeline, and the augmentation framework — full credits and methodology are in the [project report](./report/Project_Report.pdf).
 
 ## Key Result
@@ -70,8 +73,8 @@ Full raw performance data: **[Model Performance Report](./results/Model_Performa
 
 ## Code
 
-- [Multi-Layer Transformer notebook](./notebooks/Multi_Layer_Transformer.ipynb) — the proposed architecture, training, and evaluation.
-- [Single-Layer Transformer notebook](./notebooks/Single_Layer_Transformer.ipynb) — baseline model and evaluation. Full results also detailed in [Single_Layer_Transformer_Results.pdf](./results/Single_Layer_Transformer_Results.pdf).
+- [Multi-Layer Transformer notebook](./notebooks/Multi_Layer_Transformer.ipynb) — the proposed architecture, training, and evaluation. Also live on [Kaggle](https://www.kaggle.com/code/rogaldorn7/multi-layer-transformer-remote-sensing-captions).
+- [Single-Layer Transformer notebook](./notebooks/Single_Layer_Transformer.ipynb) — baseline model and evaluation. Also live on [Kaggle](https://www.kaggle.com/code/rogaldorn7/single-layer-transformer-remote-sensing-captions). Full results also detailed in [Single_Layer_Transformer_Results.pdf](./results/Single_Layer_Transformer_Results.pdf).
 
 ## Qualitative Comparison
 
