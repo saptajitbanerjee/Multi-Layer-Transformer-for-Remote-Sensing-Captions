@@ -125,6 +125,7 @@ This confirms the model's captioning ability generalizes to genuinely out-of-dis
 
 - 📄 [Full project report](./report/Project_Report.pdf) — complete methodology, architecture details, and results.
 - 🖥️ [Presentation slides](<./presentation/Final Project Presetation - ID5030.pdf>) — condensed overview of the approach and findings.
+- 📊 [Model Performance Report](./results/Model_Performance_Report.xlsx) — full raw benchmark data across all models, phases, and beam widths.
 - 📎 [Supplementary file](./Supplementary_File.pdf) — additional material referenced in the report.
 
 ## Author
