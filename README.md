@@ -2,7 +2,7 @@
 
 A deep learning image captioning system for satellite imagery, built around a custom Multi-Layer Transformer with an EfficientNetB7 backbone. Evaluated against a single-layer baseline on a domain-specific satellite dataset, and stress-tested zero-shot on independent, unannotated real-world conflict-zone imagery.
 
-> **Scope note:** This repo covers my individual contribution to a 3-person team project — architecture design and optimization of the Single- and Multi-Layer Transformer pipelines, training and evaluation of both models on the satellite dataset, and zero-shot real-world validation. Teammates Umika Khugsal and Aritra Das contributed the Phase 1 recurrent baselines (CNN-LSTM/CNN-GRU), the data/tokenization pipeline, and the augmentation framework — full credits and methodology are in the [project report](./report).
+> **Scope note:** This repo covers my individual contribution to a 3-person team project — architecture design and optimization of the Single- and Multi-Layer Transformer pipelines, training and evaluation of both models on the satellite dataset, and zero-shot real-world validation. Teammates Umika Khugsal and Aritra Das contributed the Phase 1 recurrent baselines (CNN-LSTM/CNN-GRU), the data/tokenization pipeline, and the augmentation framework — full credits and methodology are in the [project report](./report/Project_Report.pdf).
 
 ## Key Result
 
@@ -37,7 +37,19 @@ The Single Layer Transformer's Self-Attention and Cross-Attention mechanisms out
 
 **Phase 2 — Domain adaptation (Satellite Image Caption Generation dataset):** The Single Layer baseline was scaled into the proposed Multi-Layer Transformer:
 
-![Multi Layer Transformer Architecture Diagram](Multi_Layer_Transformer_Architecture Diagram.png)
+```mermaid
+flowchart LR
+    A[Images] --> B[EfficientNetB7<br/>CNN Backbone]
+    B --> C[Dense + SiLU<br/>512-dim projection]
+    C --> D[3x Encoder Blocks<br/>Self-Attention, 8 heads]
+    E[Captions] --> F[Embedding +<br/>Positional Encoding]
+    F --> G[3x Decoder Blocks<br/>Self-Attention + Cross-Attention]
+    D --> G
+    G --> H[Fully Connected Layers]
+    H --> I[Output]
+```
+
+![Multi Layer Transformer Architecture Diagram](./Multi_Layer_Transformer_Architecture%20Diagram.png)
 
 Key architectural changes over the baseline:
 - **Backbone upgrade**: EfficientNetB0 → **EfficientNetB7** for richer spatial feature extraction.
@@ -68,9 +80,16 @@ A consistent pattern across both models: BLEU scores decline monotonically as be
 
 Full raw performance data: **[Model Performance Report](./results/Model_Performance_Report.xlsx)**
 
+## Code
+
+- [Multi-Layer Transformer notebook](./notebooks/Multi_Layer_Transformer.ipynb) — the proposed architecture, training, and evaluation.
+- [Single-Layer Transformer notebook](./notebooks/Single_Layer_Transformer.ipynb) — baseline model and evaluation. Full results also detailed in [Single_Layer_Transformer_Results.pdf](./results/Single_Layer_Transformer_Results.pdf).
+
 ## Qualitative Comparison
 
 On unseen imagery, the Multi-Layer model consistently resolves scene semantics that the Single Layer baseline misreads from superficial visual cues:
+
+![Qualitative Comparison](./results/Qualitative%20Comparision.png)
 
 | Scene | Single Layer Caption | Multi Layer Caption |
 |---|---|---|
@@ -81,6 +100,8 @@ On unseen imagery, the Multi-Layer model consistently resolves scene semantics t
 ## Zero-Shot Validation: Real-World Conflict-Zone Imagery
 
 To test generalization beyond the training distribution, the Multi-Layer Transformer was evaluated zero-shot on independent, unannotated satellite imagery of the 2026 Iran War, sourced from Reuters and entirely excluded from training/validation. The model correctly identified domain-relevant elements — vessels, storage tanks, industrial infrastructure — despite no conflict-zone imagery appearing anywhere in training:
+
+![Captioning the 2026 Iran War Conflict Zones](./results/Captioning%20The%202026%20IRAN%20WAR%20Conflict%20Zones.png)
 
 | Location | Generated Caption |
 |---|---|
@@ -94,12 +115,23 @@ This confirms the model's captioning ability generalizes to genuinely out-of-dis
 ## Repository Structure
 
 ```
-├── report/               # Full project report (PDF)
-├── presentation/         # Project slides (PDF)
-├── notebook/             # Training notebook (added separately)
+├── notebooks/
+│   ├── Multi_Layer_Transformer.ipynb
+│   └── Single_Layer_Transformer.ipynb
+├── presentation/
+│   ├── Final Project Presetation - ID5030.pdf
+│   └── Final Project Presetation - ID5030.pptx
+├── report/
+│   └── Project_Report.pdf
 ├── results/
-│   └── Model_Performance_Report.xlsx   # Full raw metrics, all models, all beam widths
-└── figures/               # Architecture diagrams and comparison charts
+│   ├── Captioning The 2026 IRAN WAR Conflict Zones.png
+│   ├── Model_Performance_Report.xlsx
+│   ├── Qualitative Comparision.png
+│   └── Single_Layer_Transformer_Results.pdf
+├── LICENSE
+├── Multi_Layer_Transformer_Architecture Diagram.png
+├── README.md
+└── Supplementary_File.pdf
 ```
 
 ## Datasets
@@ -115,14 +147,15 @@ This confirms the model's captioning ability generalizes to genuinely out-of-dis
 
 ## Report & Presentation
 
-- 📄 [Full project report](./report) — complete methodology, architecture details, and results.
-- 🖥️ [Presentation slides](./presentation) — condensed overview of the approach and findings.
+- 📄 [Full project report](./report/Project_Report.pdf) — complete methodology, architecture details, and results.
+- 🖥️ [Presentation slides](<./presentation/Final Project Presetation - ID5030.pdf>) — condensed overview of the approach and findings.
+- 📎 [Supplementary file](./Supplementary_File.pdf) — additional material referenced in the report.
 
 ## Author
 
 **Saptajit Banerjee** — Designed and developed the Single- and Multi-Layer Transformer pipelines (EfficientNet backbones, Batch Normalization, Positional Embedding, Multi-Head Self/Cross-Attention); introduced architectural optimizations (SiLU/GELU activations, custom Manual Label Smoothing loss, 360° augmentation strategy, Adam + LR scheduler + early stopping); trained and evaluated both models on the satellite dataset across Accuracy, Cross-Entropy Loss, and BLEU-1–4 at beam widths K ∈ {1,2,3,4}; sourced and validated zero-shot generalization on independent real-world satellite imagery.
 
-Full team credits and individual contributions in the [project report](./report).
+Full team credits and individual contributions in the [project report](./report/Project_Report.pdf).
 
 ## License
 
