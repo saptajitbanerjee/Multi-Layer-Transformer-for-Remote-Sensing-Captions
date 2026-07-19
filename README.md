@@ -37,7 +37,7 @@ The Single Layer Transformer's Self-Attention and Cross-Attention mechanisms out
 
 **Phase 2 — Domain adaptation (Satellite Image Caption Generation dataset):** The Single Layer baseline was scaled into the proposed Multi-Layer Transformer:
 
-(Multi Layer Transformer Architecture Diagram)[!Multi Layer Transformer Architecture Diagram.png]
+[Multi Layer Transformer Architecture Diagram](!Multi Layer Transformer Architecture Diagram.png)
 
 Key architectural changes over the baseline:
 - **Backbone upgrade**: EfficientNetB0 → **EfficientNetB7** for richer spatial feature extraction.
