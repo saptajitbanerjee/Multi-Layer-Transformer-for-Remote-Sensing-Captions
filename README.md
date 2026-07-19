@@ -136,4 +136,4 @@ Full team credits and individual contributions in the [project report](./report/
 
 ## License
 
-[Add your preferred license]
+MIT License — see [LICENSE](./LICENSE) for details.
