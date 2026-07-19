@@ -37,18 +37,6 @@ The Single Layer Transformer's Self-Attention and Cross-Attention mechanisms out
 
 **Phase 2 — Domain adaptation (Satellite Image Caption Generation dataset):** The Single Layer baseline was scaled into the proposed Multi-Layer Transformer:
 
-```mermaid
-flowchart LR
-    A[Images] --> B[EfficientNetB7<br/>CNN Backbone]
-    B --> C[Dense + SiLU<br/>512-dim projection]
-    C --> D[3x Encoder Blocks<br/>Self-Attention, 8 heads]
-    E[Captions] --> F[Embedding +<br/>Positional Encoding]
-    F --> G[3x Decoder Blocks<br/>Self-Attention + Cross-Attention]
-    D --> G
-    G --> H[Fully Connected Layers]
-    H --> I[Output]
-```
-
 ![Multi Layer Transformer Architecture Diagram](./Multi_Layer_Transformer_Architecture%20Diagram.png)
 
 Key architectural changes over the baseline:
