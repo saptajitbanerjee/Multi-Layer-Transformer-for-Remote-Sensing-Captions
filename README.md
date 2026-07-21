@@ -1,4 +1,4 @@
-# Remote Sensing Image Captioning with a Multi-Layer Transformer
+# Remote Sensing Image Captioning with Multi-Layer Transformer
 
 A deep learning image captioning system for satellite imagery, built around a custom Multi-Layer Transformer with an EfficientNetB7 backbone. Evaluated against a single-layer baseline on a domain-specific satellite dataset, and stress-tested zero-shot on independent, unannotated real-world conflict-zone imagery.
 
